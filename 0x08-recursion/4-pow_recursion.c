@@ -1,27 +1,23 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
- * main - check the code
+ * _pow_recursion - Returns the value of x raised to the power of y.
+ * @x: The number to be raised.
+ * @y: The power.
  *
- * Return: Always 0.
+ * Return: The value of x raised to the power of y.
  */
-int main(void)
+int _pow_recursion(int x, int y)
 {
+	int result = x;
 
-	int r;
+	if (y < 0)
+		return (-1);
 
-	r  = _pow_recursion(1, 10);
-	printf("%d\n", r);
-	r = _pow_recursion(1024, 0);
-	printf("%d\n", r);
-	r = _pow_recursion(2, 16);
-	printf("%d\n", r);
-	r = _pow_recursion(5, 2);
-	printf("%d\n", r);
-	r = _pow_recursion(5, -2);
-	printf("%d\n", r);
-	r = _pow_recursion(-5, 3);
-	printf("%d\n", r);
-	return (0);
+	else if (y == 0)
+		return (1);
+
+	result *= _pow_recursion(x, y - 1);
+
+	return (result);
 }
